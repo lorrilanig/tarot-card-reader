@@ -35,11 +35,30 @@ const tarotDeck = [
 //draw card, save message and info, conditions of past present and future draws messages 
 const drawCard = (arr) => {
     let num = arr.length; 
-    return arr[randomNumGenerator(num)];
+    let card = arr[randomNumGenerator(num)];
+    return card;
 }
 //console.log(drawCard(tarotDeck));
 //draw card while spread is no greater than 3, or create three different variables, but perhaps those should be for the message... and message pulls from array which then sends a random value
+const getRandomValue = (obj) => {
+    for (const key in obj) {
+        if (Array.isArray(obj[key])){
+            let valueArray = obj[key];
+        for (const value of obj[key]) {
+            let num = valueArray.length;
+            let reading = valueArray[randomNumGenerator(num)];
+            return reading;
+        }
+    }
+    }
+    //return tarotDeck[2].value[0];
+   } 
+
+console.log(getRandomValue(tarotDeck[1]));
 
 //validation for not double drawing a card
 
 //run tarot reading
+const tarotReading = () => {
+
+}

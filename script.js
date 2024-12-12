@@ -22,7 +22,7 @@ const tarotDeck = [
     death = {name: 'Death', value:['a sense of the end, perhaps a sense of ones own mortality', 'some sort of destruction in ones environment', 'a sense of inertia']},
     temperance = {name: 'Temperance', value:['a sense of frugality, perhaps linked the economy and money', 'a sense of physical management, perhaps lacking in moderation', 'some sort of accommodation to be made, perhaps for you or someone close']},
     devil = {name: 'The Devil', value:['a sense of violence, ravage and forceful', 'some sort of vehemence, brought on by extraordinary efforts', 'a sense of fatality, one which is predestined, but not necessarily evil']},
-    tower = {name: 'The Tower', value:['some sort of misery and distress brought upon by ruin', 'a sense of disgrace, perhaps brought on by poverty or deception', 'an adversity, perhaps a one calamity, or else a series of misfortunes']},
+    tower = {name: 'The Tower', value:['some sort of misery and distress brought upon by ruin', 'a sense of disgrace, perhaps brought on by poverty or deception', 'an adversity, perhaps one calamity, or else a series of misfortunes']},
     star = {name: 'The Star', value:['a sense of something lost or stolen, either physical or emotional', 'a sense of ones basic needs are lacking, perhaps causing feelings of abandonment', 'a sense of hope and brightness']},
     moon = {name: 'The Moon', value:['a sense of danger brought on by a feeling of hidden enemies', 'some sort of slander, one that was an error', 'a sense of terror in darkness, perhaps brought on by the unknown']},
     sun = {name: 'The Sun', value:['a sense of happiness and fortune in ones marriage or relationship', 'some sort of fortune in partnership', 'a sense of contentment in all aspects']},
@@ -55,11 +55,31 @@ const getRandomValue = (obj) => {
     //return tarotDeck[2].value[0];
    } 
 
-console.log(getRandomValue(drawCard(tarotDeck)));
+//console.log(getRandomValue(drawCard(tarotDeck)));
 
 //validation for not double drawing a card
 
 //run tarot reading
 const tarotReading = () => {
+    let past = drawCard(tarotDeck);
+    let present = drawCard(tarotDeck);
+    let future = drawCard(tarotDeck);
+    if(past === present) {
+        present = drawCard(tarotDeck);
+    } else if (past === future) {
+        future = drawCard(tarotDeck);
+    } else if (present === future) {
+        present = drawCard(tarotDeck);
+    } 
+        return(`Welcome 
+        Let us see what the cards can tell us. \n
+        Your past is the ${past.name}
+        and in it was ${getRandomValue(past)}. \n
+        Your present is the ${present.name}
+        and you are surrounded by ${getRandomValue(present)}. \n
+        Your future is the ${future.name}
+        and it will bring ${getRandomValue(future)}. \n
+        The cards will forever change, take them as you will.`)
+    }
 
-}
+console.log(tarotReading());

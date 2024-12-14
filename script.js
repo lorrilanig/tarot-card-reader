@@ -61,14 +61,17 @@ const getRandomValue = (obj) => {
 
 //run tarot reading
 const tarotReading = () => {
+
     let past = drawCard(tarotDeck);
     let present = drawCard(tarotDeck);
     let future = drawCard(tarotDeck);
     if(past === present) {
         present = drawCard(tarotDeck);
-    } else if (past === future) {
+    } 
+    if (past === future) {
         future = drawCard(tarotDeck);
-    } else if (present === future) {
+    } 
+    if (present === future) {
         present = drawCard(tarotDeck);
     } 
         return(`Welcome 
